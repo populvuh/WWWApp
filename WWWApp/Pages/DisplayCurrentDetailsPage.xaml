@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WWWApp.DisplayCurrentDetailsPage" Title="{Binding title}">
+
+	<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Label">
+                <Setter Property="XAlign" Value="Start"/>
+                <Setter Property="YAlign" Value="Center"/>
+            </Style>
+            <Style x:Key="LabelStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+            <Style x:Key="ValueStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Forecast" Command="{Binding DisplayForecastCommand}" Order="Primary" Priority="0" />
+	</ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="StartAndExpand">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="150" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Label Text="{Binding detailsAt}" 	Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ValueStyle}" />
+				<Label Text="{Binding temp}" 		Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Center" FontSize="64" FontAttributes="Bold" TextColor="Olive"/>
+
+				<Image Source="{Binding weatherImage}" 	Grid.Row="1" Grid.Column="1" />
+				<Label Text="{Binding description}" 	Grid.Row="2" Grid.Column="1" XAlign="Center" YAlign="Center" FontSize="Large" FontAttributes="Bold" />
+			</Grid>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Label Text="Wind" 					Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding wind}" 		Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+
+				<Label Text="Clouds" 				Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding clouds}" 		Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+
+				<Label Text="Humidity" 			 	Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding humidity}" 	Grid.Row="2" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+
+				<Label Text="Pressure" 			 	Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding pressure}" 	Grid.Row="3" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+
+				<Label Text="Sunrise" 				Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding sunrise}" 	Grid.Row="4" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+				<Label Text="Sunset" 				Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding sunset}" 		Grid.Row="5" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+
+				<Label Text="UTC Offset" 				Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Label Text="{Binding timezoneOffset}" 	Grid.Row="6" Grid.Column="1" Style="{StaticResource ValueStyle}" />
+
+				<Label Text="Geo Coords" 				Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+				<Grid Grid.Row="7" Grid.Column="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Button Text="{Binding latlong}" Grid.Column="0" Command="{Binding DisplayMapCommand}"/>
+				</Grid>
+			</Grid>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

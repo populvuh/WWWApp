@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WWWApp.SelectCityPage" Title="Select City">
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="StartAndExpand">
+			<SearchBar x:Name="SearchFor" Placeholder="search for" TextChanged="OnValueChanged" />
+			<ListView x:Name="listView" ItemsSource="{Binding cities}" SelectedItem="{Binding listItemSelected, Mode=TwoWay}" HasUnevenRows="false" RowHeight="60">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell> 
+							<Grid Padding="5"> 
+								<Grid.ColumnDefinitions> 
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions> 
+								<Label Grid.Column="0" Text="{Binding name}" FontAttributes="Bold"/>
+								<Button Grid.Column="1" Text="Wikipedia" Command="{Binding DisplayLinkCommand}" CommandParameter="{Binding link}" />
+							</Grid> 
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

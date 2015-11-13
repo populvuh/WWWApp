@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+			x:Class="FreshMvvmDemo.DisplayGraphPage"
+			Title = "{Binding cityName}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Map" Command="{Binding DisplayFullDetailsCommand}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+			<ScrollView>
+			<oxy:PlotView Model="{Binding Model}" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" WidthRequest="{Binding width}" HeightRequest="{Binding height}" />
+			<!--ActivityIndicator x:Name="actInd" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsLoading}"/  IsVisible="{Binding IsLoading}" -->
+			</ScrollView>
+		</StackLayout>
+	</ContentPage.Content>
+
+</ContentPage>

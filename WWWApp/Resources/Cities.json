@@ -1,0 +1,12 @@
+﻿{"countryList":[
+	{"country":"NP", "cities":[{"city":"Kathmandu"}]},
+	{"country":"VE", "cities":[{"city":"Merida"}]},
+	{"country":"CN", "cities":[{"city":"Lhasa"}]},
+	{"country":"TR", "cities":[{"city":"İstanbul"}]},
+	{"country":"DO", "cities":[{"city":"Mao"}]},
+	{"country":"BO", "cities":[{"city":"Villazon","link":"http:\/\/en.wikipedia.org\/wiki\/Villaz%C3%B3n"}]},
+	{"country":"CD", "cities":[
+		{"city":"Yangambi","link":"http:\/\/en.wikipedia.org\/wiki\/Yangambi"},
+		{"city":"Watsa","link":"http:\/\/en.wikipedia.org\/wiki\/Watsa"},
+		{"city":"Wamba","link":"http:\/\/en.wikipedia.org\/wiki\/Wamba_Territory"}]
+}]}

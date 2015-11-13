@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WWWApp.SelectCountryPage" Title="Select Country">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="About" Command="{Binding DisplayAboutCommand}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="StartAndExpand">
+			<SearchBar x:Name="SearchFor" Placeholder="search for" SearchButtonPressed="OnSearch"  TextChanged="OnValueChanged" />
+
+			<ListView x:Name="listView" ItemsSource="{Binding countrycodes}" SelectedItem="{Binding listItemSelected, Mode=TwoWay}" HasUnevenRows="false" RowHeight="75">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell> 
+							<Grid Padding="5"> 
+								<Grid.ColumnDefinitions> 
+									<ColumnDefinition Width="100" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions> 
+								<Image Source="{Binding imageSource}" Grid.Column="0" />
+								<StackLayout Grid.Column="1">
+									<Label Text="{Binding name}" FontAttributes="Bold" />
+									<Label Text="{Binding code}" FontAttributes="Bold" />
+								</StackLayout>
+								<Button Text="Wikipedia" Command="{Binding DisplayLinkCommand}" CommandParameter="{Binding name}" Grid.Column="2" />
+							</Grid> 
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

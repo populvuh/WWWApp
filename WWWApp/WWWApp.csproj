@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{E660BF2A-FEFE-47E3-A72F-7A4066E2BF88}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WWWApp</RootNamespace>
+    <AssemblyName>WWWApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IWeatherApi.cs" />
+    <Compile Include="Pages\SelectCityPage.xaml.cs">
+      <DependentUpon>SelectCityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageModels\SelectCityPageModel.cs" />
+    <Compile Include="Services\GetWeather.cs" />
+    <Compile Include="Models\CountryCity.cs" />
+    <Compile Include="Pages\SelectCountryPage.xaml.cs">
+      <DependentUpon>SelectCountryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Countries.cs" />
+    <Compile Include="Models\Cities.cs" />
+    <Compile Include="PageModels\SelectCountryPageModel.cs" />
+    <Compile Include="PageModels\DisplayWebPageModel.cs" />
+    <Compile Include="Pages\DisplayWebPage.xaml.cs">
+      <DependentUpon>DisplayWebPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IDeviceInfoProvider.cs" />
+    <Compile Include="Models\Weather.cs" />
+    <Compile Include="BindableBehaviour.cs" />
+    <Compile Include="MapBehaviour.cs" />
+    <Compile Include="Services\ILocationViewModel.cs" />
+    <Compile Include="MapHelper.cs" />
+    <Compile Include="MapDescriptor.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageModels\AboutPageModel.cs" />
+    <Compile Include="PageModels\DisplayMapPageModel.cs" />
+    <Compile Include="PageModels\DisplayCurrentDetailsPageModel.cs" />
+    <Compile Include="Pages\DisplayCurrentDetailsPage.xaml.cs">
+      <DependentUpon>DisplayCurrentDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrentWeather.cs" />
+    <Compile Include="PageModels\DisplayForecastPageModel.cs" />
+    <Compile Include="Pages\DisplayForecastPage.xaml.cs">
+      <DependentUpon>DisplayForecastPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DisplayMapPage.xaml.cs">
+      <DependentUpon>DisplayMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CityPage.cs" />
+    <Compile Include="CityWeatherPage.cs" />
+    <Compile Include="Services\ITimeZoneApi.cs" />
+    <Compile Include="Models\Timezone.cs" />
+    <Compile Include="Models\CurrentWeatherXml.cs" />
+    <Compile Include="Pages\DisplayForecastGraphPage.xaml.cs">
+      <DependentUpon>DisplayForecastGraphPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageModels\DisplayForecastGraphPageModel.cs" />
+    <Compile Include="WWWApp.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.3\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
+  <Import Project="..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Reference Include="FreshIOC">
+      <HintPath>..\packages\FreshMvvm.0.0.6\lib\FreshIOC.dll</HintPath>
+    </Reference>
+    <Reference Include="FreshMvvm">
+      <HintPath>..\packages\FreshMvvm.0.0.6\lib\FreshMvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Refit">
+      <HintPath>..\packages\refit.2.4.1\lib\Portable-Net45+NetCore45+WP8+WPA81\Refit.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.1.0.0-unstable1857\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Xamarin.Forms">
+      <HintPath>..\packages\OxyPlot.Xamarin.Forms.1.0.0-unstable1857\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\OxyPlot.Xamarin.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.1.6.2\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged">
+      <HintPath>..\packages\PropertyChanged.Fody.1.50.3\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\packages\Xamarin.Forms.Maps.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\packages\Acr.UserDialogs.4.1.8\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\packages\Acr.UserDialogs.4.1.8\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Pages\" />
+    <Folder Include="PageModels\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Cities\" />
+    <Folder Include="Resources\Flags\" />
+    <Folder Include="Resources\Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\SelectCityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SelectCountryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Cities.json" />
+    <EmbeddedResource Include="Resources\CountryCityList.json" />
+    <EmbeddedResource Include="Pages\DisplayWebPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Cities\A.json" />
+    <EmbeddedResource Include="Resources\Cities\B.json" />
+    <EmbeddedResource Include="Resources\Cities\C.json" />
+    <EmbeddedResource Include="Resources\Cities\D.json" />
+    <EmbeddedResource Include="Resources\Cities\E.json" />
+    <EmbeddedResource Include="Resources\Cities\F.json" />
+    <EmbeddedResource Include="Resources\Cities\G.json" />
+    <EmbeddedResource Include="Resources\Cities\H.json" />
+    <EmbeddedResource Include="Resources\Cities\I.json" />
+    <EmbeddedResource Include="Resources\Cities\J.json" />
+    <EmbeddedResource Include="Resources\Cities\K.json" />
+    <EmbeddedResource Include="Resources\Cities\L.json" />
+    <EmbeddedResource Include="Resources\Cities\M.json" />
+    <EmbeddedResource Include="Resources\Cities\N.json" />
+    <EmbeddedResource Include="Resources\Cities\O.json" />
+    <EmbeddedResource Include="Resources\Cities\P.json" />
+    <EmbeddedResource Include="Resources\Cities\Q.json" />
+    <EmbeddedResource Include="Resources\Cities\R.json" />
+    <EmbeddedResource Include="Resources\Cities\S.json" />
+    <EmbeddedResource Include="Resources\Cities\T.json" />
+    <EmbeddedResource Include="Resources\Cities\U.json" />
+    <EmbeddedResource Include="Resources\Cities\V.json" />
+    <EmbeddedResource Include="Resources\Cities\W.json" />
+    <EmbeddedResource Include="Resources\Cities\X.json" />
+    <EmbeddedResource Include="Resources\Cities\Y.json" />
+    <EmbeddedResource Include="Resources\Cities\Z.json" />
+    <EmbeddedResource Include="Resources\Flags\Afghanistan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Albania.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Algeria.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Andorra.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Angola.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Antigua_and_Barbuda.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Argentina.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Armenia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Australia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Austria.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Azerbaijan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bahamas.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bahrain.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bangladesh.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Barbados.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Belarus.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Belgium.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Belize.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Benin.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bermuda.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bhutan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bolivia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bosnia_and_Herzegovina.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Botswana.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Brazil.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Brunei.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Bulgaria.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Burkina_Faso.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Burundi.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cambodia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cameroon.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Canada.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cape_Verde.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cayman_Islands.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Central_African_Republic.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Chad.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Chile.jpg" />
+    <EmbeddedResource Include="Resources\Flags\China.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Colombia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Comoros.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cook_Islands.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Costa_Rica.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Croatia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cuba.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Cyprus.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Czech_Republic.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Democratic_Republic_of_the_Congo.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Denmark.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Djibouti.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Dominica.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Dominican_Republic.jpg" />
+    <EmbeddedResource Include="Resources\Flags\East_Timor.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Ecuador.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Egypt.jpg" />
+    <EmbeddedResource Include="Resources\Flags\El_Salvador.jpg" />
+    <EmbeddedResource Include="Resources\Flags\England.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Equatorial_Guinea.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Eritrea.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Estonia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Ethiopia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Fiji.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Finland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\France.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Gabon.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Gambia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Georgia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Germany.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Ghana.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Greece.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Greenland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Grenada.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Guam.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Guatemala.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Guinea-Bissau.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Guinea.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Guyana.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Haiti.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Honduras.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Hong_Kong.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Hungary.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Iceland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\India.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Indonesia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Iran.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Iraq.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Ireland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Israel.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Italy.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Ivorycoast.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Jamaica.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Japan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Jordan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Kazakhstan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Kenya.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Kiribati.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Kuwait.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Kyrgyzstan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Laos.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Latvia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Lebanon.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Lesotho.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Liberia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Libya.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Liechtenstein.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Lithuania.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Luxembourg.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Macedonia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Madagascar.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Malawi.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Malaysia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Maldives.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Mali.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Malta.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Mauritania.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Mauritius.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Mexico.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Moldova.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Monaco.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Mongolia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Montenegro.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Morocco.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Mozambique.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Myanmar.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Namibia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Nauru.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Nepal.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Netherlands.jpg" />
+    <EmbeddedResource Include="Resources\Flags\New_Caledonia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\New_Zealand.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Nicaragua.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Niger.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Nigeria.jpg" />
+    <EmbeddedResource Include="Resources\Flags\North_Korea.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Norway.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Oman.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Pakistan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Palau.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Palestine.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Panama.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Papua_New_Guinea.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Paraguay.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Peru.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Philippines.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Poland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Portugal.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Puerto_Rico.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Qatar.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Republic_of_the_Congo.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Romania.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Russia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Rwanda.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Saint_Kitts_and_Nevis.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Saint_Lucia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Saint_Vincent_and_the_Grenadines.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Samoa.jpg" />
+    <EmbeddedResource Include="Resources\Flags\San_Marino.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Sao_Tome_and_Principe.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Saudi_Arabia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Scotland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Senegal.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Serbia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Seychelles.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Sierra_Leone.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Singapore.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Slovakia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Slovenia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Solomon_Islands.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Somalia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\South_Africa.jpg" />
+    <EmbeddedResource Include="Resources\Flags\South_Korea.jpg" />
+    <EmbeddedResource Include="Resources\Flags\South_Sudan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Spain.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Sri_Lanka.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Sudan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Suriname.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Swaziland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Sweden.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Turkey.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Switzerland.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Syria.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Taiwan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Tajikistan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Tanzania.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Thailand.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Togo.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Tonga.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Trinidad_and_Tobago.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Tunisia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Turkmenistan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Tuvalu.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Uganda.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Ukraine.jpg" />
+    <EmbeddedResource Include="Resources\Flags\United_Arab_Emirates.jpg" />
+    <EmbeddedResource Include="Resources\Flags\United_Kingdom.jpg" />
+    <EmbeddedResource Include="Resources\Flags\United_States.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Uruguay.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Uzbekistan.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Vanuatu.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Venezuela.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Vietnam.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Wales.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Yemen.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Zambia.jpg" />
+    <EmbeddedResource Include="Resources\Flags\Zimbabwe.jpg" />
+    <EmbeddedResource Include="Resources\Countries2.json" />
+    <EmbeddedResource Include="Resources\Flags\American_Samoa.png" />
+    <EmbeddedResource Include="Resources\Flags\Anguilla.png" />
+    <EmbeddedResource Include="Resources\Flags\Aruba.png" />
+    <EmbeddedResource Include="Resources\Flags\British_Indian_Ocean_Territory.png" />
+    <EmbeddedResource Include="Resources\Flags\Christmas_Island.png" />
+    <EmbeddedResource Include="Resources\Flags\Cocos_Islands.png" />
+    <EmbeddedResource Include="Resources\Flags\Falkland_Islands.png" />
+    <EmbeddedResource Include="Resources\Flags\Faroe_Islands.png" />
+    <EmbeddedResource Include="Resources\Flags\French_Guiana.png" />
+    <EmbeddedResource Include="Resources\Flags\French_Polynesia.png" />
+    <EmbeddedResource Include="Resources\Flags\French_Southern_Territories.png" />
+    <EmbeddedResource Include="Resources\Flags\Gibraltar.png" />
+    <EmbeddedResource Include="Resources\Flags\Guadeloupe.png" />
+    <EmbeddedResource Include="Resources\Flags\Guinea-Bissau.png" />
+    <EmbeddedResource Include="Resources\Flags\Macao.png" />
+    <EmbeddedResource Include="Resources\Flags\Marshall_Islands.png" />
+    <EmbeddedResource Include="Resources\Flags\Martinique.png" />
+    <EmbeddedResource Include="Resources\Flags\Montserrat.png" />
+    <EmbeddedResource Include="Resources\Flags\Netherlands_Antilles.png" />
+    <EmbeddedResource Include="Resources\Flags\Niue.png" />
+    <EmbeddedResource Include="Resources\Flags\Norfolk_Island.png" />
+    <EmbeddedResource Include="Resources\Flags\Northern_Mariana_Islands.png" />
+    <EmbeddedResource Include="Resources\Flags\Pitcairn.png" />
+    <EmbeddedResource Include="Resources\Flags\Saint_Helena.png" />
+    <EmbeddedResource Include="Resources\Flags\Saint-Pierre_and_Miquelon.png" />
+    <EmbeddedResource Include="Resources\Flags\Tokelau.png" />
+    <EmbeddedResource Include="Resources\Flags\Turks_and_Caicos_Islands.png" />
+    <EmbeddedResource Include="Resources\Flags\Wallis_and_Futuna.png" />
+    <EmbeddedResource Include="Resources\Flags\South_Georgia.png">
+      <LogicalName>FreshMvvmDemo.Resources.Flags.South_Georgia_and_the_South_Sandwich_Islands.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Flags\Virgin_Islands_US.png" />
+    <EmbeddedResource Include="Resources\Flags\Virgin_Islands_British.png" />
+    <EmbeddedResource Include="Resources\Flags\Timor-Leste.png" />
+    <EmbeddedResource Include="Pages\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DisplayMapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DisplayCurrentDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DisplayForecastPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icons\01d.png" />
+    <EmbeddedResource Include="Resources\Icons\02d.png" />
+    <EmbeddedResource Include="Resources\Icons\03d.png" />
+    <EmbeddedResource Include="Resources\Icons\04d.png" />
+    <EmbeddedResource Include="Resources\Icons\01n.png" />
+    <EmbeddedResource Include="Resources\Icons\02n.png" />
+    <EmbeddedResource Include="Resources\Icons\03n.png" />
+    <EmbeddedResource Include="Resources\Icons\04n.png" />
+    <EmbeddedResource Include="Resources\Icons\09d.png" />
+    <EmbeddedResource Include="Resources\Icons\09n.png" />
+    <EmbeddedResource Include="Resources\Icons\10d.png" />
+    <EmbeddedResource Include="Resources\Icons\10n.png" />
+    <EmbeddedResource Include="Resources\Icons\11d.png" />
+    <EmbeddedResource Include="Resources\Icons\11n.png" />
+    <EmbeddedResource Include="Resources\Icons\13d.png" />
+    <EmbeddedResource Include="Resources\Icons\13n.png" />
+    <EmbeddedResource Include="Pages\DisplayForecastGraphPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

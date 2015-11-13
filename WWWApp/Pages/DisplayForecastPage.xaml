@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+			x:Class="WWWApp.DisplayForecastPage"
+			Title = "{Binding title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Graph" Command="{Binding DisplayGraphCommand}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="StartAndExpand">
+
+		<Label Text="Summary " FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+		<StackLayout Orientation="Horizontal"  HorizontalOptions="StartAndExpand">
+			<StackLayout Orientation="Vertical">
+				<Label Text="Day" FontAttributes="Bold" HorizontalOptions="Start"/>
+				<Label Text="Max" FontAttributes="Bold"  HorizontalOptions="Start"/>
+				<Label Text="Min" FontAttributes="Bold"  HorizontalOptions="Start"/>
+				<Label Text="Forecast" FontAttributes="Bold"  HorizontalOptions="Start"/>
+			</StackLayout>
+			<StackLayout Orientation="Vertical">
+				<Label Text="{Binding forecastDayDetail1.day}" FontAttributes="Bold" HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail1.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail1.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Image Source="{Binding forecastDayDetail1.imageSource}" HorizontalOptions="End"/>
+			</StackLayout>
+			<StackLayout Orientation="Vertical">
+				<Label Text="{Binding forecastDayDetail2.day}" FontAttributes="Bold" HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail2.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail2.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Image Source="{Binding forecastDayDetail2.imageSource}" HorizontalOptions="End"/>
+			</StackLayout>
+			<StackLayout Orientation="Vertical">
+				<Label Text="{Binding forecastDayDetail3.day}" FontAttributes="Bold" HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail3.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail3.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Image Source="{Binding forecastDayDetail3.imageSource}"  HorizontalOptions="End"/>
+			</StackLayout>
+			<StackLayout Orientation="Vertical">
+				<Label Text="{Binding forecastDayDetail4.day}" FontAttributes="Bold" HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail4.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail4.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Image Source="{Binding forecastDayDetail4.imageSource}"  HorizontalOptions="End"/>
+			</StackLayout>
+			<StackLayout Orientation="Vertical">
+				<Label Text="{Binding forecastDayDetail5.day}" FontAttributes="Bold" HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail5.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail5.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Image Source="{Binding forecastDayDetail5.imageSource}"  HorizontalOptions="End"/>
+			</StackLayout>
+		</StackLayout>
+
+			<Label Text=" " />
+			<Label Text="Detailed Forecast" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+
+			<ListView x:Name="listView" ItemsSource="{Binding forecastDetails}" HasUnevenRows="false" RowHeight="125">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell> 
+							<Grid Padding="5"> 
+								<Grid.ColumnDefinitions> 
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="100" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions> 
+
+								<StackLayout Grid.Column="0">
+									<Label Text="{Binding date}" FontAttributes="Bold" />
+									<Label Text="{Binding time}" FontAttributes="Bold" />
+								</StackLayout>
+								<Image Source="{Binding imageSource}" Grid.Column="1" />
+								<StackLayout Grid.Column="2">
+									<Label Text="{Binding tempDescription}" FontAttributes="Bold" />
+									<Label Text="{Binding wind}" FontAttributes="Bold" />
+									<Label Text="{Binding cloudsPressure}" FontAttributes="Bold" />
+								</StackLayout>
+							</Grid> 
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
