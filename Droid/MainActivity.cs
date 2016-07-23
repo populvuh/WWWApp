@@ -3,8 +3,9 @@
 	using System;
 
 	using Xamarin.Forms;
+    using Plugin.Toasts;
 
-	using Android.App;
+    using Android.App;
 	using Android.Content;
 	using Android.Content.PM;
 	using Android.Runtime;
@@ -30,7 +31,10 @@
 			Xamarin.FormsMaps.Init(this, bundle);
 			UserDialogs.Init(this);
 
-			LoadApplication (new App ());
+            DependencyService.Register<ToastNotificatorImplementation>();   // Register your dependency
+            ToastNotificatorImplementation.Init(this);                      //you can pass additional parameters here
+
+            LoadApplication (new App ());
 		}
 
 		public static MainActivity Instance

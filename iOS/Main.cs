@@ -5,6 +5,8 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
+using Plugin.Toasts;
+
 namespace WWWApp
 {
 	public class Application

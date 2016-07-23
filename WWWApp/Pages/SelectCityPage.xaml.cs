@@ -15,9 +15,15 @@ namespace WWWApp
 				//System.Diagnostics.Debug.WriteLine("SelectCityPage.MessagingCenter () - CityFound recieved - {0}", cityLink.name);
 				GoTo(cityLink);
 			});
-		}
 
-		private void GoTo(CityLink cityLink)
+            // there's a bug in Forms which puts a large blank space (20-30cms) above the listView on some devices 
+            // (e.g. my G4, tho oddly enough, it works fine on all the emulators I've tried it on)
+            // adding a blank Header solves it
+            if (listView.Header == null)
+                listView.Header = new Label { HeightRequest = 0 };
+        }
+
+        private void GoTo(CityLink cityLink)
 		{
 			try {
 				listView.ScrollTo (cityLink, ScrollToPosition.MakeVisible, false);

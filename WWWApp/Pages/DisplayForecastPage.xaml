@@ -18,36 +18,36 @@
 				<Label Text="Day" FontAttributes="Bold" HorizontalOptions="Start"/>
 				<Label Text="Max" FontAttributes="Bold"  HorizontalOptions="Start"/>
 				<Label Text="Min" FontAttributes="Bold"  HorizontalOptions="Start"/>
-				<Label Text="Forecast" FontAttributes="Bold"  HorizontalOptions="Start"/>
+				<Label Text="Forecast" FontAttributes="None"  HorizontalOptions="Start"/>
 			</StackLayout>
 			<StackLayout Orientation="Vertical">
 				<Label Text="{Binding forecastDayDetail1.day}" FontAttributes="Bold" HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail1.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail1.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail1.mmax, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail1.mmin, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
 				<Image Source="{Binding forecastDayDetail1.imageSource}" HorizontalOptions="End"/>
 			</StackLayout>
 			<StackLayout Orientation="Vertical">
 				<Label Text="{Binding forecastDayDetail2.day}" FontAttributes="Bold" HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail2.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail2.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail2.mmax, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail2.mmin, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
 				<Image Source="{Binding forecastDayDetail2.imageSource}" HorizontalOptions="End"/>
 			</StackLayout>
 			<StackLayout Orientation="Vertical">
 				<Label Text="{Binding forecastDayDetail3.day}" FontAttributes="Bold" HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail3.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail3.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail3.mmax, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail3.mmin, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
 				<Image Source="{Binding forecastDayDetail3.imageSource}"  HorizontalOptions="End"/>
 			</StackLayout>
 			<StackLayout Orientation="Vertical">
 				<Label Text="{Binding forecastDayDetail4.day}" FontAttributes="Bold" HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail4.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail4.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail4.mmax, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail4.mmin, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
 				<Image Source="{Binding forecastDayDetail4.imageSource}"  HorizontalOptions="End"/>
 			</StackLayout>
 			<StackLayout Orientation="Vertical">
 				<Label Text="{Binding forecastDayDetail5.day}" FontAttributes="Bold" HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail5.mmax, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
-				<Label Text="{Binding forecastDayDetail5.mmin, StringFormat='{0,12:0.0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail5.mmax, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
+				<Label Text="{Binding forecastDayDetail5.mmin, StringFormat='{0,10:0°C}'}" FontAttributes="Bold"  HorizontalOptions="End"/>
 				<Image Source="{Binding forecastDayDetail5.imageSource}"  HorizontalOptions="End"/>
 			</StackLayout>
 		</StackLayout>

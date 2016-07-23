@@ -25,7 +25,7 @@
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
-					<RowDefinition Height="150" />
+					<RowDefinition Height="80" />
 					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
 				</Grid.ColumnDefinitions>
 
 				<Label Text="{Binding detailsAt}" 	Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ValueStyle}" />
-				<Label Text="{Binding temp}" 		Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Center" FontSize="64" FontAttributes="Bold" TextColor="Olive"/>
+				<Label Text="{Binding temp}" 		Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Center" FontSize="48" FontAttributes="Bold" TextColor="Olive"/>
 
 				<Image Source="{Binding weatherImage}" 	Grid.Row="1" Grid.Column="1" />
 				<Label Text="{Binding description}" 	Grid.Row="2" Grid.Column="1" XAlign="Center" YAlign="Center" FontSize="Large" FontAttributes="Bold" />
